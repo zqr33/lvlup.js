@@ -1,15 +1,38 @@
 {
-  "name": "lvlup-api-wapper",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "lvlup.js",
+  "version": "0.0.1",
+  "description": "API wrapper for lvlup",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "shx rm -rf lib/ && tsc"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zqr33/lvlup.js.git"
+  },
+  "keywords": [
+    "lvlup",
+    "api",
+    "lvlup-api",
+    "lvlup-api-wrapper"
+  ],
+  "author": "zqr33",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zqr33/lvlup.js/issues"
+  },
+  "homepage": "https://github.com/zqr33/lvlup.js#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.6",
+    "@types/valid-url": "^1.0.3",
+    "nodemon": "^2.0.6",
+    "shx": "^0.3.3",
+    "tsc": "^1.20150623.0",
+    "typescript": "^4.0.5"
+  },
   "dependencies": {
-    "axios": "^0.20.0"
+    "axios": "^0.21.0",
+    "valid-url": "^1.0.9"
   }
 }
