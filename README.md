@@ -1,7 +1,7 @@
 # lvlup.js
 API wrapper for LVLUP
 
-##Example #1
+##Example 1
 ```javascript
 const {default: Lvlup} = require('lvlup.js')
 
@@ -15,7 +15,7 @@ const lvlup = new Lvlup("API KEY", {
 })
 ```
 
-##Example #2
+##Example 2
 ```typescript
 import lvlup from '@zqr33/lvlup.js'
 

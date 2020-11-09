@@ -7,11 +7,13 @@ import Services from './class/Services'
 class Lvlup {
     public http: AxiosInstance
     public baseUrl: string
+    public key: string
     public payments: Payments
     public user: User
     public services: Services
     constructor(key: string|undefined, { sandbox }: dataObject = { sandbox: false }) {
         if(!key) throw new Error("Bad Lvlup API key")
+        this.key = key
         if(sandbox) this.baseUrl = "https://api.sandbox.lvlup.pro/v4"
         else this.baseUrl = "https://api.lvlup.pro/v4"
 

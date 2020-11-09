@@ -4,13 +4,13 @@ import {Log, Logs, User as UserInfo} from '../../declarations'
 import actionTypes from '../constants/action-type'
 
 class User {
-    private readonly http: AxiosInstance
+    readonly #http: AxiosInstance
     constructor({http}: Lvlup) {
-        this.http = http
+        this.#http = http
     }
-    async info(): Promise<UserInfo | null> {
+    async info(): Promise<UserInfo> {
         try {
-            const { data } = await this.http({
+            const { data } = await this.#http({
                 url: "/me"
             })
             if(data && data.createdAt) data.createdAt = new Date(data.createdAt)
@@ -21,12 +21,11 @@ class User {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
-    async logs(limit: number|undefined): Promise<Logs | null> {
+    async logs(limit: number|undefined): Promise<Logs> {
         try {
-            const { data } = await this.http({
+            const { data } = await this.#http({
                 url: '/me/log',
                 params: {
                     limit
@@ -52,7 +51,6 @@ class User {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
 }

@@ -6,13 +6,13 @@ import serviceTypes from '../constants/service-types'
 import validUrl from 'valid-url'
 
 class Payments {
-    private readonly http: AxiosInstance
+    readonly #http: AxiosInstance
     constructor({ http }: Lvlup) {
-        this.http = http
+        this.#http = http
     }
-    async list(limit: number|undefined): Promise<PaymentsList|null> {
+    async list(limit: number|undefined): Promise<PaymentsList> {
         try {
-            const { data } = await this.http({
+            const { data } = await this.#http({
                 url: '/payments',
                 params: {
                     limit
@@ -35,13 +35,12 @@ class Payments {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
 
-    async get(id: string): Promise<WalletTopUp|null> {
+    async get(id: string): Promise<WalletTopUp> {
         try{
-            const { data } = await this.http({
+            const { data } = await this.#http({
                 url: `/wallet/up/${id}`
             })
             return data
@@ -51,16 +50,15 @@ class Payments {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
 
-    async create(amount: number, redirectUrl: string, webhookUrl: string): Promise<paymentCreated|null> {
+    async create(amount: number, redirectUrl: string, webhookUrl: string): Promise<paymentCreated> {
         if(typeof amount !== "number") throw new Error("amount must be a number")
         if(!validUrl.isWebUri(redirectUrl)) throw new Error("bad redirect url")
         if(!validUrl.isWebUri(webhookUrl)) throw new Error("bad webhook url")
         try {
-            const res = await this.http({
+            const res = await this.#http({
                 url: '/wallet/up',
                 method: "post",
                 data: {
@@ -77,13 +75,12 @@ class Payments {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
 
-    async wallet(): Promise<Wallet|null> {
+    async wallet(): Promise<Wallet> {
         try {
-            const { data } = await this.http({
+            const { data } = await this.#http({
                 url: "/wallet",
             })
             return data
@@ -93,7 +90,6 @@ class Payments {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
 }

@@ -3,7 +3,7 @@ import {AxiosInstance} from "axios";
 import serviceTypes from '../constants/service-types'
 
 class ServiceClass {
-    private readonly http: AxiosInstance
+    readonly #http: AxiosInstance
     public id: number
     public serviceId: number
     public serviceType: string
@@ -15,7 +15,7 @@ class ServiceClass {
     public payedTo: Date
     public planName: string
     constructor(service: Service, http: AxiosInstance) {
-        this.http = http
+        this.#http = http
 
         this.id = service.id
         this.serviceId = service.serviceId
@@ -29,9 +29,9 @@ class ServiceClass {
         this.planName = service.planName
     }
 
-    async stats(): Promise<ServiceStatus|null> {
+    async stats(): Promise<ServiceStatus> {
         try{
-            const { data } = await this.http({
+            const { data } = await this.#http({
                 url: `/services/vps/${this.id}/stats`
             })
             return data
@@ -41,13 +41,12 @@ class ServiceClass {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
 
-    async stop(): Promise<void|null> {
+    async stop(): Promise<void> {
         try{
-            await this.http({
+            await this.#http({
                 url: `/services/vps/${this.id}/stop`
             })
         }catch (e) {
@@ -56,13 +55,12 @@ class ServiceClass {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
 
-    async start(): Promise<void|null> {
+    async start(): Promise<void> {
         try{
-            await this.http({
+            await this.#http({
                 url: `/services/vps/${this.id}/start`
             })
         }catch (e) {
@@ -71,7 +69,6 @@ class ServiceClass {
             } else {
                 throw new Error(e)
             }
-            return null
         }
     }
 
