@@ -80,3 +80,26 @@ export interface ServiceStatus {
     status: string
     vmUptimeS: number
 }
+
+export interface Proxmox {
+    password: string,
+    url: string,
+    username: string
+}
+
+export interface Attacks {
+    endedAt: number,
+    id: number,
+    ip: string,
+    startedAt: number
+}
+
+export interface AttacksList {
+    count: number
+    items: Attacks[]
+}
+
+export interface Filtering {
+    filteringEnabled: boolean,
+    state: string
+}
