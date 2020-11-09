@@ -1,13 +1,15 @@
 import axios, { AxiosInstance } from 'axios'
 import {dataObject} from '../declarations'
 import Payments from './class/Payments'
-import User from "./class/User";
+import User from "./class/User"
+import Services from './class/Services'
 
 class Lvlup {
     public http: AxiosInstance
     public baseUrl: string
     public payments: Payments
     public user: User
+    public services: Services
     constructor(key: string|undefined, { sandbox }: dataObject = { sandbox: false }) {
         if(!key) throw new Error("Bad Lvlup API key")
         if(sandbox) this.baseUrl = "https://api.sandbox.lvlup.pro/v4"
@@ -22,6 +24,7 @@ class Lvlup {
         this.http = instance
         this.payments = new Payments(this)
         this.user = new User(this)
+        this.services = new Services(this)
     }
 }
 

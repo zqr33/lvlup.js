@@ -1,21 +1,21 @@
 const types: any = {
-    1: "Success",
-    2: "Fail",
-    4: "EmailChangeInit",
-    5: "EmailChangeFinish",
-    6: "SuccessFromV2",
-    7: "ServiceRecreate",
-    8: "ApiMasterKeyCreate",
-    9: "ApiMasterKeyDelete",
-    10: "ApiMasterKeyChange",
-    11: "PasswordResetInit",
-    12: "PasswordResetFinish",
-    13: "PasswordChange",
-    14: "PasswordChangeCurrentPasswordWrong",
-    15: "WebhookCreated",
-    16: "WebhookUpdated",
-    17: "WebhookDeleted",
-    18: "PaidToChanged"
+    1: "success",
+    2: "fail",
+    4: "emailChangeInit",
+    5: "emailChangeFinish",
+    6: "successFromV2",
+    7: "serviceRecreate",
+    8: "apiMasterKeyCreate",
+    9: "apiMasterKeyDelete",
+    10: "apiMasterKeyChange",
+    11: "passwordResetInit",
+    12: "passwordResetFinish",
+    13: "passwordChange",
+    14: "passwordChangeCurrentPasswordWrong",
+    15: "webhookCreated",
+    16: "webhookUpdated",
+    17: "webhookDeleted",
+    18: "paidToChanged"
 }
 
 export default types

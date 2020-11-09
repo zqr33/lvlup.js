@@ -62,3 +62,21 @@ export interface Logs {
     count: number
     items: Log[]
 }
+
+export interface Service {
+    id: number,
+    serviceId: number,
+    serviceType: string,
+    ip: string,
+    name: string,
+    nodeId: number,
+    createdAt: Date,
+    active: boolean,
+    payedTo: Date,
+    planName: string
+}
+
+export interface ServiceStatus {
+    status: string
+    vmUptimeS: number
+}

@@ -10,7 +10,7 @@ class Payments {
     constructor({ http }: Lvlup) {
         this.http = http
     }
-    async list(limit: number|undefined): Promise<PaymentsList|undefined> {
+    async list(limit: number|undefined): Promise<PaymentsList|null> {
         try {
             const { data } = await this.http({
                 url: '/payments',
@@ -35,6 +35,7 @@ class Payments {
             } else {
                 throw new Error(e)
             }
+            return null
         }
     }
 
