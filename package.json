@@ -1,11 +1,12 @@
 {
-  "name": "lvlup.js",
+  "name": "@zqr33/lvlup.js",
   "version": "0.0.1",
   "description": "API wrapper for lvlup",
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "shx rm -rf lib/ && tsc"
+    "build": "shx rm -rf lib/ && tsc",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -18,7 +19,7 @@
     "lvlup-api-wrapper"
   ],
   "author": "zqr33",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/zqr33/lvlup.js/issues"
   },
@@ -34,5 +35,8 @@
   "dependencies": {
     "axios": "^0.21.0",
     "valid-url": "^1.0.9"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }

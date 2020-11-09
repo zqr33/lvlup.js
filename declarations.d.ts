@@ -7,7 +7,7 @@ export interface Payment {
     methodId: number
     method: string
     serviceId: number
-    serviceType: string
+    serviceType: string|undefined
     amount: number
     description: string
     createdAt: Date
@@ -37,11 +37,11 @@ export interface Wallet {
 }
 
 export interface User {
-    "createdAt": Date,
-    "email": string,
-    "fullName": string,
-    "uid": number,
-    "username": string
+    createdAt: Date,
+    email: string,
+    fullName: string,
+    uid: number,
+    username: string
 }
 
 export interface Log {
