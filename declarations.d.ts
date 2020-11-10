@@ -103,3 +103,46 @@ export interface Filtering {
     filteringEnabled: boolean,
     state: string
 }
+
+export interface SandboxAccount {
+    apiKey: string,
+    email: string,
+    id: number,
+    password: string,
+    username: string
+}
+
+export type Protocol =
+    "arkSurvivalEvolved" |
+    "arma" |
+    "gtaMultiTheftAutoSanAndreas" |
+    "gtaSanAndreasMultiplayerMod" |
+    "hl2Source" |
+    "minecraftPocketEdition" |
+    "minecraftQuery" |
+    "mumble" |
+    "rust" |
+    "teamspeak2" |
+    "teamspeak3" |
+    "trackmaniaShootmania" |
+    "other"
+
+export type WhitelistState = "ok" | "createRulePending" | "deleteRulePending"
+
+export interface Whitelist {
+    id: number,
+    ports: {
+        from: number,
+        to: number
+    },
+    protocol: Protocol,
+    state: WhitelistState
+}
+
+export interface WhitelistAdd {
+    ports: {
+        from: number,
+        to: number
+    },
+    protocol: Protocol,
+}

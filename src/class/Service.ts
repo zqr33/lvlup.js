@@ -1,7 +1,7 @@
-import {Service, ServiceStatus, Proxmox,  AttacksList, Filtering} from "../../declarations";
+import {Service, ServiceStatus, Proxmox,  AttacksList} from "../../declarations";
 import {AxiosInstance} from "axios";
 import serviceTypes from '../constants/service-types'
-import ServiceFiltering from "./ServiceFiltering";
+import Filtering from "./service/Filtering";
 
 class ServiceClass {
     readonly #http: AxiosInstance
@@ -15,7 +15,7 @@ class ServiceClass {
     public active: boolean
     public payedTo: Date
     public planName: string
-    public filtering: ServiceFiltering
+    public filtering: Filtering
     constructor(service: Service, http: AxiosInstance) {
         this.#http = http
 
@@ -29,7 +29,7 @@ class ServiceClass {
         this.active = service.active
         this.payedTo = new Date(service.payedTo)
         this.planName = service.planName
-        this.filtering = new ServiceFiltering(service.id, this.#http)
+        this.filtering = new Filtering(service.id, this.#http)
     }
 
     async stats(): Promise<ServiceStatus> {
@@ -39,8 +39,8 @@ class ServiceClass {
             })
             return data
         }catch (e) {
-            if(e.response.data) {
-                throw new Error(e.response.data)
+            if(e.response && e.response.data) {
+                throw new Error(e.response.data.msg)
             } else {
                 throw new Error(e)
             }
@@ -54,8 +54,8 @@ class ServiceClass {
                 method: "POST"
             })
         }catch (e) {
-            if(e.response.data) {
-                throw new Error(e.response.data)
+            if(e.response && e.response.data) {
+                throw new Error(e.response.data.msg)
             } else {
                 throw new Error(e)
             }
@@ -69,8 +69,8 @@ class ServiceClass {
                 method: "POST"
             })
         }catch (e) {
-            if(e.response.data) {
-                throw new Error(e.response.data)
+            if(e.response && e.response.data) {
+                throw new Error(e.response.data.msg)
             } else {
                 throw new Error(e)
             }
@@ -85,8 +85,8 @@ class ServiceClass {
             })
             return data
         }catch (e) {
-            if(e.response.data) {
-                throw new Error(e.response.data)
+            if(e.response && e.response.data) {
+                throw new Error(e.response.data.msg)
             } else {
                 throw new Error(e)
             }
@@ -104,7 +104,7 @@ class ServiceClass {
             return data
         }catch(e) {
             if(e.response.data) {
-                throw new Error(e.response.data)
+                throw new Error(e.response.data.msg)
             } else {
                 throw new Error(e)
             }

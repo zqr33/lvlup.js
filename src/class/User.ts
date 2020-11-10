@@ -16,7 +16,7 @@ class User {
             if(data && data.createdAt) data.createdAt = new Date(data.createdAt)
             return data
         }catch (e) {
-            if(e.response.data) {
+            if(e.response && e.response.data) {
                 throw new Error(e.response.data)
             } else {
                 throw new Error(e)
@@ -46,7 +46,7 @@ class User {
             }))
             return mapped
         }catch (e) {
-            if(e.response.data) {
+            if(e.response && e.response.data) {
                 throw new Error(e.response.data)
             } else {
                 throw new Error(e)

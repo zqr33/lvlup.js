@@ -30,7 +30,7 @@ class Payments {
             }))
             return mapped
         }catch (e) {
-            if(e.response.data) {
+            if(e.response && e.response.data) {
                 throw new Error(e.response.data)
             } else {
                 throw new Error(e)
@@ -45,7 +45,7 @@ class Payments {
             })
             return data
         }catch(e) {
-            if(e.response.data) {
+            if(e.response && e.response.data) {
                 throw new Error(e.response.data)
             } else {
                 throw new Error(e)
@@ -70,7 +70,7 @@ class Payments {
             const data: paymentCreated = res.data
             return data
         } catch(e) {
-            if(e.response.data) {
+            if(e.response && e.response.data) {
                 throw new Error(e.response.data)
             } else {
                 throw new Error(e)
@@ -85,7 +85,7 @@ class Payments {
             })
             return data
         }catch (e) {
-            if(e.response.data) {
+            if(e.response && e.response.data) {
                 throw new Error(e.response.data)
             } else {
                 throw new Error(e)

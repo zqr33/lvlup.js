@@ -3,6 +3,7 @@ import {dataObject} from '../declarations'
 import Payments from './class/Payments'
 import User from "./class/User"
 import Services from './class/Services'
+import Sandbox from "./class/Sandbox";
 
 class Lvlup {
     public http: AxiosInstance
@@ -11,6 +12,7 @@ class Lvlup {
     public payments: Payments
     public user: User
     public services: Services
+    public sandbox: Sandbox | undefined
     constructor(key: string|undefined, { sandbox }: dataObject = { sandbox: false }) {
         if(!key) throw new Error("Bad Lvlup API key")
         this.key = key
@@ -27,6 +29,7 @@ class Lvlup {
         this.payments = new Payments(this)
         this.user = new User(this)
         this.services = new Services(this)
+        if(sandbox) this.sandbox = new Sandbox(this)
     }
 }
 

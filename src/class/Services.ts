@@ -14,11 +14,12 @@ class Services {
             const { data } = await this.#http({
                 url: '/services'
             })
+            if(!data || !data.services) return []
             const services: ServiceClass[] = data.services.map((s: Service) => new ServiceClass(s, this.#http))
             return services
         }catch (e) {
-            if(e.response.data) {
-                throw new Error(e.response.data)
+            if(e.response && e.response.data) {
+                throw new Error(e.response.data.msg)
             } else {
                 throw new Error(e)
             }
@@ -33,8 +34,8 @@ class Services {
             if(!service) throw new Error('service not found')
             return new ServiceClass(service, this.#http)
         }catch (e) {
-            if(e.response.data) {
-                throw new Error(e.response.data)
+            if(e.response && e.response.data) {
+                throw new Error(e.response.data.msg)
             } else {
                 throw new Error(e)
             }
