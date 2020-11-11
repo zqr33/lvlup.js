@@ -30,6 +30,7 @@
     "nodemon": "^2.0.6",
     "shx": "^0.3.3",
     "tsc": "^1.20150623.0",
+    "typedoc": "^0.19.2",
     "typescript": "^4.0.5"
   },
   "dependencies": {

@@ -17,7 +17,7 @@ const lvlup = new Lvlup("API KEY", {
 
 ##Example 2
 ```typescript
-import lvlup from '@zqr33/lvlup.js'
+import Lvlup from '@zqr33/lvlup.js'
 
 const lvlup = new Lvlup("API KEY", {
     sandbox: false

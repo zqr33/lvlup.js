@@ -1,0 +1,10 @@
+{
+  "module": "commonjs",
+  "mode": "modules",
+  "out": "docs/",
+  "name": "lvlup.js",
+  "inputFiles": ["./src", "./declarations.d.ts"],
+  "exclude": ["node_modules/**", "**/"],
+  "includeDeclarations": true,
+  "theme": "default"
+}
